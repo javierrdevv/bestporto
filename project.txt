@@ -1,0 +1,237 @@
+# PROJECT: PREMIUM EDITORIAL DEVELOPER PORTFOLIO
+
+Act as a senior creative director, award-winning web designer, and expert frontend motion engineer.
+
+Your task is to design and implement a distinctive personal developer portfolio inspired by Awwwards-level digital experiences, luxury editorial websites, oversized typography, and cinematic interactive web design.
+
+Do not create a conventional developer portfolio template.
+
+The website must feel art-directed, premium, immersive, and visually memorable.
+
+## 1. DESIGN RESEARCH — REQUIRED FIRST STEP
+
+Before writing code, research real website references online.
+
+Search using these exact design terms:
+
+- Awwwards oversized typography website
+- Editorial web design with giant typography
+- Cinematic portfolio website design
+- Experimental typography web design
+- Awwwards creative developer portfolio
+- GSAP scroll-driven storytelling website
+- Luxury editorial digital experience
+- Interactive portfolio with immersive hero section
+
+Start with:
+- https://www.awwwards.com/websites/portfolio/
+- https://www.awwwards.com/websites/typography/
+- https://www.awwwards.com/websites/interactive/
+- https://www.awwwards.com/
+
+Find three real websites that are relevant to this project's visual direction.
+
+If web search or browser tools are available, open the actual websites and inspect their visual composition, typography, navigation, scrolling behavior, and animations.
+
+Do not invent website references or claim to have inspected websites that you could not access.
+
+Summarize the strongest design principles from the references before implementation.
+
+## 2. CORE ART DIRECTION
+
+The primary visual direction is:
+
+OVERSIZED TYPOGRAPHY + EDITORIAL ART DIRECTION + CINEMATIC HERO + SOPHISTICATED MOTION DESIGN.
+
+The opening viewport must immediately establish a strong visual identity.
+
+Use the following principles:
+
+- Extremely large display typography that dominates the viewport.
+- A carefully art-directed hero composition with intentional overlap between text and imagery.
+- Strong visual hierarchy and precise spacing.
+- Asymmetrical layouts rather than predictable centered layouts.
+- Layered visual elements with depth and a clear focal point.
+- Premium typography with deliberate line breaks and tight, considered tracking.
+- Restrained supporting copy.
+- A sophisticated color palette chosen for the project's identity.
+- Subtle borders, fine details, and floating interface elements where appropriate.
+- A coherent visual story as the visitor scrolls.
+
+Do not blindly reproduce the medical website reference. Adapt its composition principles to a developer portfolio.
+
+Do not use a generic gradient background, giant rounded cards, a standard centered hero, or a repetitive grid of identical project cards.
+
+Avoid generic AI-generated design patterns.
+
+## 3. HERO SECTION — THE MOST IMPORTANT PART
+
+Design the hero as a complete visual composition, not a conventional introduction section.
+
+The first viewport should contain:
+
+- A minimal, carefully designed navigation.
+- A short personal identity or professional label.
+- An oversized headline that interacts visually with the main visual.
+- A distinctive portrait, creative image, or carefully constructed visual centerpiece.
+- A concise description of my expertise.
+- One or two intentional calls to action.
+- Small editorial details that enhance the composition without creating clutter.
+
+Example headline directions:
+
+"Building Digital
+Experiences."
+
+"Code Meets
+Curiosity."
+
+"Beyond The
+Interface."
+
+These are conceptual examples, not mandatory final copy. Choose the strongest direction based on the actual portfolio content.
+
+The main headline should be exceptionally prominent on desktop, potentially spanning most of the viewport width.
+
+Explore overlapping text and imagery, but preserve legibility.
+
+The hero must feel custom-designed rather than assembled from a typical portfolio template.
+
+## 4. PORTFOLIO STRUCTURE
+
+Create a coherent experience containing:
+
+### A. Hero / Introduction
+Establish a memorable visual identity immediately.
+
+### B. Selected Work
+Present projects as editorial case studies, not merely identical cards.
+
+Use large project imagery, prominent project titles, project numbers, categories, and concise descriptions.
+
+Explore alternating compositions, oversized numbering, asymmetric image placement, and scroll-based reveals.
+
+Use actual project assets if available. Never invent completed projects or fabricated metrics.
+
+### C. About / Creative Identity
+Introduce my background, approach to problem-solving, and interests in technology.
+
+Use expressive typography and editorial composition rather than a generic biography card.
+
+### D. Skills / Capabilities
+Present relevant technologies in a visually distinctive way without turning the section into a dashboard of progress bars or dozens of badges.
+
+### E. Experience or Journey
+Include this section only when supported by actual information. Use a clean editorial timeline or another appropriate visual treatment.
+
+### F. Contact / Final Statement
+Finish with an impactful typographic statement and a clear contact action.
+
+The sections must feel connected through a deliberate visual narrative, not like unrelated blocks stacked vertically.
+
+## 5. MOTION DESIGN — GSAP
+
+Use GSAP and ScrollTrigger when appropriate.
+
+Consider:
+
+- Staggered headline reveals.
+- Line-based text animations.
+- Clip-path image reveals.
+- Subtle image parallax.
+- Scroll-triggered transitions between editorial sections.
+- Pinned storytelling sections when they improve the narrative.
+- Horizontal project storytelling when it genuinely adds value.
+- Subtle hover interactions on project imagery and navigation.
+- Carefully timed entrance sequences.
+- Smooth transitions between visual states.
+
+Motion should enhance the design rather than compensate for a weak layout.
+
+Do not animate everything.
+
+Avoid excessive bouncing, random floating elements, distracting cursor effects, and animations that make navigation difficult.
+
+Respect reduced-motion preferences and maintain usability on touch devices.
+
+Use Lenis only if it integrates cleanly with the project's scrolling behavior. Avoid unnecessary dependencies.
+
+## 6. TYPOGRAPHY AND VISUAL SYSTEM
+
+Establish a consistent typographic system.
+
+Use:
+- A distinctive display typeface for large headlines.
+- A highly readable supporting typeface for body text and navigation.
+- Intentional differences in font size, weight, line height, and letter spacing.
+- Responsive typography using clamp() where appropriate.
+
+Typography must be one of the main design elements, not merely a way to display content.
+
+Choose a palette that supports the creative direction. Do not default to purple-blue gradients or imitate unrelated design trends.
+
+## 7. TECHNICAL REQUIREMENTS
+
+Before implementation:
+
+1. Inspect the existing repository.
+2. Identify the framework, dependencies, routes, assets, and current functionality.
+3. Preserve existing architecture unless there is a compelling technical reason to change it.
+4. Reuse appropriate existing assets and content.
+
+Implementation requirements:
+
+- Responsive desktop, tablet, and mobile layouts.
+- Semantic and accessible markup.
+- Maintainable CSS and JavaScript.
+- Smooth, performant animations.
+- Optimized image assets and font loading.
+- Functional navigation and calls to action.
+- No broken image paths or placeholder links.
+- No horizontal overflow.
+- No fabricated professional experience, project details, or achievements.
+
+Do not replace an existing working project with a different framework without permission.
+
+## 8. VISUAL VALIDATION — MANDATORY
+
+Do not stop when the website compiles.
+
+If browser automation is available:
+
+1. Run the application.
+2. Inspect the desktop hero at approximately 1440 × 900.
+3. Inspect a mobile viewport at approximately 390 × 844.
+4. Capture screenshots of the rendered website.
+5. Compare the implementation against the chosen reference principles.
+6. Identify the five most important visual weaknesses.
+7. Fix them directly in the code.
+8. Repeat the review after the changes.
+
+Prioritize:
+- Hero composition.
+- Headline scale and placement.
+- Image quality and positioning.
+- Visual hierarchy.
+- Spacing and negative space.
+- Section transitions.
+- Animation timing.
+- Mobile layout quality.
+
+If browser or visual inspection is unavailable, state that limitation honestly and perform the available code-level checks.
+
+## 9. DEFINITION OF SUCCESS
+
+The finished portfolio should feel like a custom-designed digital experience created by a creative web studio.
+
+It should have a recognizable visual identity before the visitor scrolls.
+
+It should not resemble a generic portfolio starter template.
+
+The design must be distinctive, readable, responsive, technically sound, and purposeful.
+
+Research first. Establish the art direction. Implement the complete website. Test it. Refine the result.
+
+Do not stop at a proposal, wireframe, or partial implementation.
+
+Begin by inspecting the project and researching references. Then proceed with the implementation.

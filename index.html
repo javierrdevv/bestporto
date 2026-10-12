@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rangga Aditama | Independent Creative Developer</title>
+  <meta name="description" content="Independent creative developer building art-directed, fast websites for studios and founders. Editorial-grade interfaces, engineered." />
+  <meta name="theme-color" content="#f1eee6" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#16140f" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Rangga Aditama | Independent Creative Developer" />
+  <meta property="og:description" content="Editorial-grade interfaces, engineered." />
+  <meta property="og:image" content="https://picsum.photos/seed/editorial-portrait-ink/1200/630" />
+
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+  <link rel="preconnect" href="https://picsum.photos" />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600&f[]=satoshi@400,500,700&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    document.documentElement.classList.add('js');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('reduce-motion');
+    }
+  </script>
+</head>
+<body>
+  <div class="loader" role="status" aria-label="Loading">
+    <span aria-hidden="true">L</span><span aria-hidden="true">O</span><span aria-hidden="true">A</span><span aria-hidden="true">D</span><span aria-hidden="true">I</span><span aria-hidden="true">N</span><span aria-hidden="true">G</span>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <a class="nav__brand" href="#top" translate="no">
+      <span class="nav__mark" aria-hidden="true"></span>Rangga Aditama
+    </a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+      <span class="nav__toggle-bars" aria-hidden="true"></span>
+      <span class="nav__toggle-label">Menu</span>
+    </button>
+    <nav class="nav__menu" id="site-menu" aria-label="Primary">
+      <a href="#work"><span class="nav__num" aria-hidden="true">01</span><span class="nav__label">Work</span></a>
+      <a href="#about"><span class="nav__num" aria-hidden="true">02</span><span class="nav__label">About</span></a>
+      <a href="#contact"><span class="nav__num" aria-hidden="true">03</span><span class="nav__label">Contact</span></a>
+    </nav>
+    <div class="nav__clock" aria-hidden="true">
+      <span class="nav__clock-city">Jakarta</span>
+      <span class="nav__clock-time" id="nav-time"></span>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__media" aria-hidden="true">
+        <img
+          src="https://picsum.photos/seed/editorial-ink-studio/2400/1600"
+          width="2400" height="1600"
+          alt="" fetchpriority="high" decoding="async" />
+      </div>
+
+      <div class="hero__inner">
+        <h1 class="hero__title" id="hero-title">
+          <span class="line"><span class="line__inner">Editorial</span></span>
+          <span class="line line--outline"><span class="line__inner">Engineering<span class="dot">.</span></span></span>
+        </h1>
+        <p class="hero__sub">
+          I’m Rangga. I design and build art-directed, fast websites for studios and
+          founders, from the first grid to the last animation curve.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--solid" href="#work">
+            View work
+            <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="btn btn--ghost" href="#contact">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section class="work" id="work" aria-labelledby="work-title">
+      <header class="section-head reveal">
+        <h2 class="section-title" id="work-title">Selected work</h2>
+      </header>
+
+      <ol class="projects">
+        <li class="project project--media-right reveal">
+          <div class="project__body">
+            <span class="project__index" aria-hidden="true">01</span>
+            <h3 class="project__title"><span translate="no">Selatan</span></h3>
+            <p class="project__meta"><span>Platform</span><span>2025</span></p>
+            <p class="project__desc">
+              An editorial platform documenting modern architecture across Southeast Asia.
+              Long-form reading, generous type, zero friction. [PLACEHOLDER]
+            </p>
+            <a class="link-cta" href="#work">Read the case study <span aria-hidden="true">&rarr;</span></a>
+          </div>
+          <figure class="project__media">
+            <img src="https://picsum.photos/seed/selatan-architecture/1600/1100" width="1600" height="1100"
+              alt="Selatan platform project preview" loading="lazy" decoding="async" />
+          </figure>
+        </li>
+
+        <li class="project project--full reveal">
+          <figure class="project__media">
+            <img src="https://picsum.photos/seed/meridian-atelier/1800/1000" width="1800" height="1000"
+              alt="Meridian Atelier studio site preview" loading="lazy" decoding="async" />
+          </figure>
+          <div class="project__body project__body--wide">
+            <div class="project__lead">
+              <span class="project__index" aria-hidden="true">02</span>
+              <h3 class="project__title"><span translate="no">Meridian Atelier</span></h3>
+            </div>
+            <div class="project__detail">
+              <p class="project__meta"><span>Studio site</span><span>2024</span></p>
+              <p class="project__desc">
+                A portfolio and project archive for an architecture practice, built around a
+                slow, considered scroll. [PLACEHOLDER]
+              </p>
+              <a class="link-cta" href="#work">Read the case study <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+        </li>
+
+        <li class="project project--media-left reveal">
+          <div class="project__body">
+            <span class="project__index" aria-hidden="true">03</span>
+            <h3 class="project__title"><span translate="no">Lumen Labs</span></h3>
+            <p class="project__meta"><span>Product</span><span>2025</span></p>
+            <p class="project__desc">
+              A product configurator and story for a lighting design lab, where motion
+              explains the hardware instead of decorating it. [PLACEHOLDER]
+            </p>
+            <a class="link-cta" href="#work">Read the case study <span aria-hidden="true">&rarr;</span></a>
+          </div>
+          <figure class="project__media">
+            <img src="https://picsum.photos/seed/lumen-lighting/1500/1500" width="1500" height="1500"
+              alt="Lumen Labs product site preview" loading="lazy" decoding="async" />
+          </figure>
+        </li>
+
+        <li class="project project--media-right reveal">
+          <div class="project__body">
+            <span class="project__index" aria-hidden="true">04</span>
+            <h3 class="project__title"><span translate="no">Kopi Rimba</span></h3>
+            <p class="project__meta"><span>Brand &amp; commerce</span><span>2023</span></p>
+            <p class="project__desc">
+              A brand site and store for a single-origin coffee roaster, from packaging
+              language to checkout. [PLACEHOLDER]
+            </p>
+            <a class="link-cta" href="#work">Read the case study <span aria-hidden="true">&rarr;</span></a>
+          </div>
+          <figure class="project__media">
+            <img src="https://picsum.photos/seed/kopi-rimba-roaster/1600/1100" width="1600" height="1100"
+              alt="Kopi Rimba brand site preview" loading="lazy" decoding="async" />
+          </figure>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <h2 class="about__statement reveal" id="about-title">
+        I work where design and engineering meet, and refuse to let either one carry the other.
+      </h2>
+      <div class="about__body">
+        <div class="about__col reveal">
+          <p>
+            For the last eight years I’ve moved between design tools and a code editor,
+            translating layouts into interfaces that hold their shape on every screen.
+            Most of my work starts as a page structure and ends as a system.
+            [PLACEHOLDER]
+          </p>
+          <p>
+            I care about typography, spacing and the small decisions that make a site feel
+            authored rather than assembled. I care just as much about load time, keyboard
+            access and the fact that a beautiful page that janks is not beautiful.
+            [PLACEHOLDER]
+          </p>
+        </div>
+        <aside class="about__aside reveal">
+          <p class="about__aside-title">Currently</p>
+          <ul class="about__list">
+            <li>Independent practice, open to studio collaborations</li>
+            <li>Comfortable owning design and build end to end</li>
+            <li>Remote first, based in Jakarta [PLACEHOLDER]</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills" id="skills" aria-labelledby="skills-title">
+      <header class="section-head reveal">
+        <h2 class="section-title" id="skills-title">Capabilities</h2>
+      </header>
+      <div class="skills__grid">
+        <article class="skill-cluster reveal">
+          <h3 class="skill-cluster__title">Interface</h3>
+          <ul class="skill-cluster__list">
+            <li translate="no">React</li>
+            <li translate="no">TypeScript</li>
+            <li translate="no">Next.js</li>
+            <li translate="no">Tailwind&nbsp;CSS</li>
+            <li>Design systems</li>
+          </ul>
+        </article>
+        <article class="skill-cluster reveal">
+          <h3 class="skill-cluster__title">Motion</h3>
+          <ul class="skill-cluster__list">
+            <li translate="no">GSAP</li>
+            <li translate="no">ScrollTrigger</li>
+            <li translate="no">WebGL</li>
+            <li translate="no">Lottie</li>
+            <li>Interaction design</li>
+          </ul>
+        </article>
+        <article class="skill-cluster reveal">
+          <h3 class="skill-cluster__title">Systems</h3>
+          <ul class="skill-cluster__list">
+            <li>Accessibility</li>
+            <li>Performance</li>
+            <li>Content modelling</li>
+            <li>Headless&nbsp;CMS</li>
+            <li>Technical SEO</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section class="journey" id="journey" aria-labelledby="journey-title">
+      <header class="section-head reveal">
+        <h2 class="section-title" id="journey-title">Experience</h2>
+      </header>
+      <ol class="timeline">
+        <li class="timeline__row reveal">
+          <span class="timeline__years" aria-hidden="true">2024</span>
+          <div class="timeline__detail">
+            <h3 class="timeline__role">Independent creative developer</h3>
+            <p class="timeline__place">Freelance, remote [PLACEHOLDER]</p>
+          </div>
+          <span class="timeline__now">Present</span>
+        </li>
+        <li class="timeline__row reveal">
+          <span class="timeline__years" aria-hidden="true">2022</span>
+          <div class="timeline__detail">
+            <h3 class="timeline__role">Senior frontend developer</h3>
+            <p class="timeline__place">Studio name, Jakarta [PLACEHOLDER]</p>
+          </div>
+          <span class="timeline__now">2024</span>
+        </li>
+        <li class="timeline__row reveal">
+          <span class="timeline__years" aria-hidden="true">2020</span>
+          <div class="timeline__detail">
+            <h3 class="timeline__role">Frontend developer</h3>
+            <p class="timeline__place">Agency name, Bandung [PLACEHOLDER]</p>
+          </div>
+          <span class="timeline__now">2022</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <h2 class="contact__statement reveal" id="contact-title">
+        Have something worth building? Let’s give it a point of view.
+      </h2>
+      <a class="contact__email reveal" href="mailto:hello@yourdomain.com" translate="no">
+        hello@yourdomain.com
+        <span class="contact__email-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <ul class="contact__social reveal">
+        <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://x.com/" target="_blank" rel="noopener">X</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span translate="no">&copy; <span id="year">2026</span> Rangga Aditama</span>
+    <a href="#top" class="footer__top">Back to top <span aria-hidden="true">&uarr;</span></a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
