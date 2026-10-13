@@ -29,6 +29,27 @@
     setInterval(tick, 30000);
   }
 
+  /* ---------- Theme toggle ---------- */
+  var themeBtn = document.getElementById("theme-toggle");
+  if (themeBtn) {
+    var syncTheme = function (t) {
+      themeBtn.setAttribute("aria-pressed", t === "dark" ? "true" : "false");
+      themeBtn.setAttribute("aria-label", t === "dark" ? "Switch to light theme" : "Switch to dark theme");
+      var paper = t === "dark" ? "#17150f" : "#f1eee6";
+      document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) {
+        m.setAttribute("content", paper);
+      });
+    };
+    var theme = root.getAttribute("data-theme") || "light";
+    syncTheme(theme);
+    themeBtn.addEventListener("click", function () {
+      theme = theme === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", theme);
+      syncTheme(theme);
+      try { localStorage.setItem("theme", theme); } catch (e) {}
+    });
+  }
+
   function closeMenu() {
     if (!nav || !toggle) return;
     nav.classList.remove("is-open");
@@ -173,6 +194,50 @@
       );
     });
 
+    /* Selected work: each case study unfolds.
+       The media curtain opens (clip-path), the frame settles from a slight
+       over-scale, the caption rises in sequence, then the media drifts with
+       the scroll. All of it is GSAP-owned on the frame, so the photo's CSS
+       hover zoom stays intact. */
+    gsap.utils.toArray(".project").forEach(function (el) {
+      var media = el.querySelector(".project__media");
+      var caption = el.querySelectorAll(
+        ".project__index, .project__title, .project__meta, .project__desc"
+      );
+
+      var tl = gsap.timeline({
+        scrollTrigger: { trigger: el, start: "top 82%", once: true },
+        defaults: { ease: "expo.out" },
+      });
+
+      if (media) {
+        gsap.set(media, { clipPath: "inset(0 100% 0 0)" });
+        tl.to(media, { clipPath: "inset(0 0% 0 0)", duration: 1.1 }, 0);
+        tl.fromTo(media, { scale: 1.05 }, { scale: 1, duration: 1.3, ease: "power3.out" }, 0);
+      }
+      if (caption.length) {
+        tl.fromTo(
+          caption,
+          { y: 34, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, stagger: 0.07 },
+          0.2
+        );
+      }
+
+      /* Continuous depth: the media block drifts against the scroll. */
+      if (media) {
+        gsap.fromTo(
+          media,
+          { yPercent: 4 },
+          {
+            yPercent: -4,
+            ease: "none",
+            scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
+          }
+        );
+      }
+    });
+
     /* Hero image-zoom: pin the hero and zoom the photo OUT on scroll.
        The page only continues after the zoom-out finishes. */
     gsap.fromTo(
@@ -191,6 +256,28 @@
         },
       }
     );
+
+    /* Sticky stack: each case study pins and the next slides over it, while
+       the outgoing panel recedes. Created after the hero pin so positions
+       account for its pin-spacer. Desktop only; small screens and reduced
+       motion keep a plain scrolling list. */
+    if (window.matchMedia("(min-width: 901px)").matches) {
+      var panels = gsap.utils.toArray(".project");
+      panels.forEach(function (panel, i) {
+        if (i === panels.length - 1) return;
+        gsap.to(panel, {
+          scale: 0.9,
+          opacity: 0.6,
+          ease: "none",
+          scrollTrigger: {
+            trigger: panels[i + 1],
+            start: "top bottom",
+            end: "top top",
+            scrub: true,
+          },
+        });
+      });
+    }
 
     /* Recalculate once fonts and above-fold assets settle. */
     if (document.fonts && document.fonts.ready) {

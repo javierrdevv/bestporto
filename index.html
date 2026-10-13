@@ -25,6 +25,15 @@
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.documentElement.classList.add('reduce-motion');
     }
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
   </script>
 </head>
 <body>
@@ -38,18 +47,23 @@
     <a class="nav__brand" href="#top" translate="no">
       <span class="nav__mark" aria-hidden="true"></span>Rangga Aditama
     </a>
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="site-menu">
-      <span class="nav__toggle-bars" aria-hidden="true"></span>
-      <span class="nav__toggle-label">Menu</span>
-    </button>
     <nav class="nav__menu" id="site-menu" aria-label="Primary">
       <a href="#work"><span class="nav__num" aria-hidden="true">01</span><span class="nav__label">Work</span></a>
       <a href="#about"><span class="nav__num" aria-hidden="true">02</span><span class="nav__label">About</span></a>
       <a href="#contact"><span class="nav__num" aria-hidden="true">03</span><span class="nav__label">Contact</span></a>
     </nav>
-    <div class="nav__clock" aria-hidden="true">
-      <span class="nav__clock-city">Jakarta</span>
-      <span class="nav__clock-time" id="nav-time"></span>
+    <div class="nav__right">
+      <div class="nav__clock" aria-hidden="true">
+        <span class="nav__clock-city">Jakarta</span>
+        <span class="nav__clock-time" id="nav-time"></span>
+      </div>
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
+        <span class="theme-toggle__icon" aria-hidden="true"></span>
+      </button>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+        <span class="nav__toggle-bars" aria-hidden="true"></span>
+        <span class="nav__toggle-label">Menu</span>
+      </button>
     </div>
   </header>
 
@@ -89,7 +103,7 @@
       </header>
 
       <ol class="projects">
-        <li class="project project--media-right reveal">
+        <li class="project project--media-right">
           <div class="project__body">
             <span class="project__index" aria-hidden="true">01</span>
             <h3 class="project__title"><span translate="no">Selatan</span></h3>
@@ -106,7 +120,7 @@
           </figure>
         </li>
 
-        <li class="project project--full reveal">
+        <li class="project project--full">
           <figure class="project__media">
             <img src="https://picsum.photos/seed/meridian-atelier/1800/1000" width="1800" height="1000"
               alt="Meridian Atelier studio site preview" loading="lazy" decoding="async" />
@@ -127,7 +141,7 @@
           </div>
         </li>
 
-        <li class="project project--media-left reveal">
+        <li class="project project--media-left">
           <div class="project__body">
             <span class="project__index" aria-hidden="true">03</span>
             <h3 class="project__title"><span translate="no">Lumen Labs</span></h3>
@@ -144,7 +158,7 @@
           </figure>
         </li>
 
-        <li class="project project--media-right reveal">
+        <li class="project project--media-right">
           <div class="project__body">
             <span class="project__index" aria-hidden="true">04</span>
             <h3 class="project__title"><span translate="no">Kopi Rimba</span></h3>
