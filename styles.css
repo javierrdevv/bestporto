@@ -286,6 +286,9 @@ html:not(.js) .loader { display: none; }
   padding: 0 var(--pad);
   color: var(--on-dark);
   border-bottom: 1px solid rgba(246, 243, 236, 0.16);
+  background: rgba(10, 9, 6, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   --nav-accent: var(--ember-lit);
   transition: transform 0.45s var(--ease), background 0.4s var(--ease), border-color 0.4s var(--ease), color 0.4s var(--ease);
 }
