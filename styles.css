@@ -514,8 +514,12 @@ html.has-cursor button { cursor: none; }
   object-fit: cover;
   object-position: 50% 38%;
   filter: grayscale(1) sepia(0.2) brightness(0.5) contrast(1.05);
+  transition: filter 0.6s var(--ease);
   transform-origin: 50% 40%;
   will-change: transform;
+}
+.hero:hover .hero__media img {
+  filter: grayscale(0) sepia(0) brightness(0.62) contrast(1.04) saturate(1.08);
 }
 .hero__inner {
   position: relative;
