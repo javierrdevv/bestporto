@@ -1,5 +1,5 @@
 /* =========================================================
-   Rangga Aditama - Editorial Engineering
+   Haidar Nanda - Editorial Engineering
    GSAP + ScrollTrigger + Lenis. Motion is reduced/disabled
    when the user prefers reduced motion.
    ========================================================= */
