@@ -180,6 +180,27 @@
 
   /* ---------- Section reveals ---------- */
   if (typeof ScrollTrigger !== "undefined") {
+    /* Hero image-zoom: pin the hero and zoom the photo OUT on scroll.
+       Created first so every later scroll trigger measures with its
+       pin-spacer already in the layout; otherwise their starts read
+       ~110vh too early. */
+    gsap.fromTo(
+      ".hero__media img",
+      { scale: 1.5 },
+      {
+        scale: 1,
+        ease: "none",
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "+=110%",
+          pin: true,
+          scrub: 0.6,
+        },
+      }
+    );
+
     gsap.utils.toArray(".reveal").forEach(function (el) {
       gsap.fromTo(
         el,
@@ -237,25 +258,6 @@
         );
       }
     });
-
-    /* Hero image-zoom: pin the hero and zoom the photo OUT on scroll.
-       The page only continues after the zoom-out finishes. */
-    gsap.fromTo(
-      ".hero__media img",
-      { scale: 1.5 },
-      {
-        scale: 1,
-        ease: "none",
-        immediateRender: false,
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "+=110%",
-          pin: true,
-          scrub: 0.6,
-        },
-      }
-    );
 
     /* Sticky stack: each case study pins and the next slides over it, while
        the outgoing panel recedes. Created after the hero pin so positions

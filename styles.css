@@ -245,7 +245,7 @@ html:not(.js) .loader { display: none; }
 .loader.is-done { opacity: 0; visibility: hidden; animation: none; }
 .loader > span {
   display: inline-block;
-  font-family: var(--ff-display);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   font-weight: 600;
   font-size: clamp(3rem, 13vw, 8.125rem);
   line-height: 1;
@@ -658,24 +658,65 @@ html:not(.js) .loader { display: none; }
   padding: clamp(4rem, 11vh, 10rem) var(--pad);
   background: var(--paper-2);
 }
-.skills__grid {
+.skills__stack {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
+  max-width: var(--maxw);
+  margin-inline: auto;
 }
-.skill-cluster__title {
+.skills__lead {
+  position: sticky;
+  top: 50vh;
+  transform: translateY(-50%);
+  align-self: start;
+}
+.skills__title {
   font-family: var(--ff-display);
   font-weight: 500;
-  font-size: 1.4rem;
-  letter-spacing: 0.01em;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--line-strong);
-  margin-bottom: 1.1rem;
+  font-size: var(--fs-section);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
-.skill-cluster__list li {
-  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
-  padding: 0.4rem 0;
-  color: var(--ink-soft);
+.skills__note {
+  margin-top: 1.1rem;
+  font-size: var(--fs-small);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.skills__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--ff-display);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 3.1vw, 2.6rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.skills__list li { padding-block: 0.08em; }
+
+/* Each line sits in dim ink and ignites in ember as it crosses the center
+   band. The band is anchored to the viewport (background-attachment: fixed),
+   so the highlight always lands on the same screen line regardless of scroll. */
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .skills__list li {
+    --band: 50vh;
+    background-image: linear-gradient(
+      180deg,
+      var(--ink-faint) 0 calc(var(--band) - 0.5lh),
+      var(--ember) calc(var(--band) - 0.55lh) calc(var(--band) + 0.55lh),
+      var(--ink-faint) calc(var(--band) + 0.5lh)
+    );
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 /* ---------- Journey ---------- */
@@ -782,7 +823,10 @@ html:not(.js) .loader { display: none; }
   .project--full,
   .project__body--wide,
   .about__body,
-  .skills__grid { grid-template-columns: 1fr; }
+  .skills__stack { grid-template-columns: 1fr; }
+  .skills__lead { position: static; transform: none; }
+  /* iOS Safari mis-renders fixed backgrounds; glow degrades to flat ink. */
+  .skills__list li { background-image: none; color: var(--ink-soft); }
   .project--media-left .project__body,
   .project--media-left .project__media { order: initial; }
   .about__col { columns: 1; max-width: 60ch; }
@@ -833,6 +877,7 @@ html:not(.js) .loader { display: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .loader > span { animation: none !important; }
+  .skills__list li { background-image: none; color: var(--ink-soft); }
   .js .reveal,
   .js .hero__title .line__inner,
   .js .hero__media img,
