@@ -915,7 +915,23 @@ html.has-cursor button { cursor: none; }
 .footer__top { color: var(--ink-soft); transition: color 0.3s var(--ease); }
 .footer__top:hover { color: var(--ember); }
 
+/* Lock the page behind the open mobile menu. */
+html.menu-lock { overflow: hidden; }
+
 /* ---------- Responsive ---------- */
+/* Short viewports (landscape phones): keep the whole hero within one screen. */
+@media (max-height: 520px) {
+  .hero {
+    padding-top: calc(var(--nav-h) + 1rem);
+    padding-bottom: clamp(1.25rem, 4vh, 2.5rem);
+  }
+  .hero__title {
+    font-size: clamp(2rem, 8.5vh, 3.25rem);
+    margin: 0.6rem 0 0.8rem;
+  }
+  .hero__sub { font-size: 0.95rem; max-width: 64ch; }
+  .hero__cta { margin-top: 1.1rem; }
+}
 @media (max-width: 900px) {
   .project,
   .project--full,
@@ -941,39 +957,102 @@ html.has-cursor button { cursor: none; }
 
   .roles { grid-template-columns: 1fr; }
   .roles__item + .roles__item { border-left: 0; border-top: 1px solid var(--line); }
+
+  /* Comfortable touch targets (invisible hit areas, no visual change) */
+  .theme-toggle { width: 2.75rem; height: 2.75rem; }
+  .nav__toggle { min-height: 2.75rem; }
+  .nav__brand,
+  .link-cta,
+  .contact__email,
+  .contact__social a,
+  .footer__top { position: relative; }
+  .nav__brand::before,
+  .link-cta::before,
+  .contact__email::before,
+  .contact__social a::before,
+  .footer__top::before {
+    content: "";
+    position: absolute;
+    inset: -0.9rem -0.5rem;
+  }
 }
 
 @media (max-width: 720px) {
+  /* Lift the hero copy off the bottom edge on phones. */
+  .hero {
+    align-items: center;
+    padding-bottom: clamp(3.5rem, 11vh, 6.5rem);
+  }
+  .hero__title { margin-top: 0; }
+
   .nav__toggle { display: inline-flex; }
   .nav__clock { display: none; }
+
+  /* Bar and panel read as one solid surface while the menu is open. */
+  .nav.is-open {
+    background: var(--paper);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom-color: transparent;
+  }
+
+  /* Full-height paper panel. The nav's backdrop-filter makes it the
+     containing block, so the panel is sized with top + height (not inset). */
   .nav__menu {
     position: fixed;
-    inset: var(--nav-h) 0 auto 0;
+    grid-column: auto;
+    justify-self: auto;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    height: calc(100dvh - var(--nav-h));
     flex-direction: column;
+    justify-content: center;
     gap: 0;
-    padding: 0.5rem var(--pad) 2rem;
+    padding: clamp(1rem, 4vh, 2rem) var(--pad) clamp(2rem, 9vh, 5rem);
     background: var(--paper);
-    border-bottom: 1px solid var(--line);
-    transform: translateY(-12px);
+    overscroll-behavior: contain;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s;
+    transform: translateY(-10px);
+    transition: opacity 0.35s var(--ease), transform 0.45s var(--ease),
+      visibility 0.45s;
   }
-  .nav.is-open .nav__menu { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav.is-open .nav__menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
   .nav__menu a {
     display: flex;
-    align-items: baseline;
-    gap: 0.9rem;
-    padding: 1rem 0;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    padding: clamp(0.85rem, 2.4vh, 1.4rem) 0;
     border-bottom: 1px solid var(--line);
     font-family: var(--ff-display);
-    font-size: 1.6rem;
-    letter-spacing: 0;
+    font-size: clamp(2rem, 12vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
     text-transform: none;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.4s var(--ease), transform 0.5s var(--ease);
   }
   .nav__menu a::after { display: none; }
-  .nav__num { font-size: 0.7rem; color: var(--ember); }
   .nav__menu a:last-child { border-bottom: 0; }
+  .nav__num {
+    padding-top: 0.4em;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--ember);
+    opacity: 0.9;
+  }
+  .nav.is-open .nav__menu a { opacity: 1; transform: none; }
+  .nav.is-open .nav__menu a:nth-child(1) { transition-delay: 0.05s; }
+  .nav.is-open .nav__menu a:nth-child(2) { transition-delay: 0.11s; }
+  .nav.is-open .nav__menu a:nth-child(3) { transition-delay: 0.17s; }
 }
 
 /* ---------- Reduced motion ---------- */

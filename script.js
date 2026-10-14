@@ -50,25 +50,33 @@
     });
   }
 
-  function closeMenu() {
+  var toggleLabel = toggle && toggle.querySelector(".nav__toggle-label");
+
+  function setMenu(open) {
     if (!nav || !toggle) return;
-    nav.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
+    nav.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    root.classList.toggle("menu-lock", open);
+    if (toggleLabel) toggleLabel.textContent = open ? "Close" : "Menu";
+    if (lenis) { if (open) lenis.stop(); else lenis.start(); }
   }
 
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      setMenu(!nav.classList.contains("is-open"));
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") closeMenu();
+      if (e.key === "Escape") setMenu(false);
     });
     if (menu) {
       menu.querySelectorAll("a").forEach(function (a) {
-        a.addEventListener("click", closeMenu);
+        a.addEventListener("click", function () { setMenu(false); });
       });
     }
+    var desktop = window.matchMedia("(min-width: 721px)");
+    var onDesktop = function (e) { if (e.matches) setMenu(false); };
+    if (desktop.addEventListener) desktop.addEventListener("change", onDesktop);
+    else if (desktop.addListener) desktop.addListener(onDesktop);
   }
 
   /* Nav scroll state via IntersectionObserver (no scroll listener) */
