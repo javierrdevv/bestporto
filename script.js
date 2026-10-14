@@ -173,8 +173,8 @@
         cursorSeen = true;
         rx = mx;
         ry = my;
-        cursor.classList.remove("is-hidden");
       }
+      cursor.classList.remove("is-hidden");
       cursorDot.style.transform = "translate3d(" + mx + "px," + my + "px,0)";
     });
     document.addEventListener("mouseleave", function () {
