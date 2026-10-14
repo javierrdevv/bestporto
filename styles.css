@@ -755,45 +755,52 @@ html:not(.js) .loader { display: none; }
   border-radius: clamp(1rem, 2.6vw, 2rem) clamp(1rem, 2.6vw, 2rem) 0 0;
   padding: clamp(4rem, 11vh, 10rem) var(--pad);
 }
-.timeline {
-  position: relative;
-  border-left: 1px solid var(--line-strong);
-  max-width: 900px;
-}
-.timeline__row {
-  position: relative;
+/* ---------- Experience ---------- */
+/* Editorial rule grid, not elevated card boxes: one hairline frame, numbered
+   columns. The current role's index carries the accent. */
+.roles {
   display: grid;
-  grid-template-columns: 0.6fr 2fr 0.8fr;
-  gap: clamp(1rem, 4vw, 3rem);
-  align-items: baseline;
-  padding: clamp(1.5rem, 4vh, 2.5rem) 0 clamp(1.5rem, 4vh, 2.5rem) clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
 }
-.timeline__row::before {
-  content: "";
-  position: absolute;
-  left: -5px;
-  top: clamp(1.6rem, 4vh, 2.7rem);
-  width: 9px;
-  height: 9px;
-  background: var(--ink);
+.roles__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: clamp(1.6rem, 4vh, 2.6rem) clamp(1.1rem, 2.4vw, 2rem) clamp(2rem, 5vh, 3.2rem);
 }
-.timeline__row:first-child::before { background: var(--ember); }
-.timeline__years {
+.roles__item + .roles__item { border-left: 1px solid var(--line); }
+.roles__index {
   font-family: var(--ff-display);
-  font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.01em;
-}
-.timeline__role { font-family: var(--ff-display); font-weight: 500; font-size: 1.15rem; }
-.timeline__place { color: var(--ink-soft); font-size: 0.95rem; margin-top: 0.25rem; }
-.timeline__now {
-  justify-self: end;
-  font-size: var(--fs-small);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: var(--ink-faint);
-  font-variant-numeric: tabular-nums;
+  transition: color 0.4s var(--ease);
 }
+.roles__period {
+  font-size: var(--fs-small);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-faint);
+}
+.roles__role {
+  margin-top: 0.3rem;
+  font-family: var(--ff-display);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.roles__place { color: var(--ink-soft); font-size: 0.95rem; }
+.roles__tag { color: var(--ink-faint); }
+.roles__item:first-child .roles__index,
+.roles__item:hover .roles__index { color: var(--ember); }
 
 /* ---------- Contact ---------- */
 .contact {
@@ -875,12 +882,8 @@ html:not(.js) .loader { display: none; }
   .project--media-left .project__media { order: initial; }
   .about__col { columns: 1; max-width: 60ch; }
 
-  .timeline__row {
-    grid-template-columns: 1fr;
-    gap: 0.35rem;
-    padding-left: clamp(1.25rem, 5vw, 2rem);
-  }
-  .timeline__now { justify-self: start; }
+  .roles { grid-template-columns: 1fr; }
+  .roles__item + .roles__item { border-left: 0; border-top: 1px solid var(--line); }
 }
 
 @media (max-width: 720px) {
