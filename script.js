@@ -126,6 +126,77 @@
     gsap.registerPlugin(ScrollTrigger);
   }
 
+  /* ---------- Smart nav: hide on scroll down, reveal on scroll up + progress ---------- */
+  if (nav && typeof ScrollTrigger !== "undefined") {
+    var progressEl = nav.querySelector(".nav__progress");
+    var lastNavY = 0;
+    ScrollTrigger.create({
+      start: 0,
+      end: "max",
+      onUpdate: function (self) {
+        var y = self.scroll();
+        if (progressEl) progressEl.style.transform = "scaleX(" + self.progress.toFixed(4) + ")";
+        if (reduce || nav.classList.contains("is-open")) {
+          nav.classList.remove("nav--hidden");
+          lastNavY = y;
+          return;
+        }
+        if (y > lastNavY + 4 && y > 160) nav.classList.add("nav--hidden");
+        else if (y < lastNavY - 4) nav.classList.remove("nav--hidden");
+        lastNavY = y;
+      },
+    });
+  }
+
+  /* ---------- Custom cursor (fine pointer + motion allowed only) ---------- */
+  if (!reduce && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    var cursor = document.createElement("div");
+    cursor.className = "cursor is-hidden";
+    cursor.setAttribute("aria-hidden", "true");
+    cursor.innerHTML = '<span class="cursor__ring"></span><span class="cursor__dot"></span>';
+    document.body.appendChild(cursor);
+    root.classList.add("has-cursor");
+
+    var cursorRing = cursor.querySelector(".cursor__ring");
+    var cursorDot = cursor.querySelector(".cursor__dot");
+    var mx = window.innerWidth / 2;
+    var my = window.innerHeight / 2;
+    var rx = mx;
+    var ry = my;
+    var cursorSeen = false;
+    var cursorScale = 1;
+
+    document.addEventListener("mousemove", function (e) {
+      mx = e.clientX;
+      my = e.clientY;
+      if (!cursorSeen) {
+        cursorSeen = true;
+        rx = mx;
+        ry = my;
+        cursor.classList.remove("is-hidden");
+      }
+      cursorDot.style.transform = "translate3d(" + mx + "px," + my + "px,0)";
+    });
+    document.addEventListener("mouseleave", function () {
+      cursor.classList.add("is-hidden");
+    });
+    document.addEventListener("mouseover", function (e) {
+      if (e.target.closest && e.target.closest("a, button, [role='button']")) cursor.classList.add("is-active");
+    });
+    document.addEventListener("mouseout", function (e) {
+      if (e.target.closest && e.target.closest("a, button, [role='button']")) cursor.classList.remove("is-active");
+    });
+
+    gsap.ticker.add(function () {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      var target = cursor.classList.contains("is-active") ? 1.9 : 1;
+      cursorScale += (target - cursorScale) * 0.18;
+      cursorRing.style.transform =
+        "translate3d(" + rx + "px," + ry + "px,0) scale(" + cursorScale.toFixed(3) + ")";
+    });
+  }
+
   /* ---------- Smooth scroll (Lenis) ---------- */
   var lenis = null;
   if (!reduce && typeof Lenis !== "undefined" && typeof ScrollTrigger !== "undefined") {
